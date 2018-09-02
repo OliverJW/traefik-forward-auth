@@ -7,9 +7,6 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # Add libraries
-RUN export GOPATH=/app
-RUN echo "export GOPATH=/go/src/app" >> ~/.bash_profile
-RUN source ~/.bash_profile
 RUN apt-get update
 RUN \
   apt-get install golang && \
