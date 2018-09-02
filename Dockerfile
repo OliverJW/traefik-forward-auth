@@ -1,4 +1,4 @@
-FROM golang:1.10-alpine as builder
+FROM hypriot/rpi-alpine as builder
 
 # Setup
 RUN mkdir /app
