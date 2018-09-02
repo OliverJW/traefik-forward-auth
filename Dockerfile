@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian as builder
 
 # Setup
-RUN mkdir /app
+RUN mkdir -p /app
 WORKDIR /app
 
 # Add libraries
