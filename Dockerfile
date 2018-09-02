@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian as builder
 SHELL ["/bin/bash", "-c"]
 ENV GOPATH=/app
-RUN echo ls -l
+
 # Setup
 RUN mkdir -p /app
 WORKDIR /app
