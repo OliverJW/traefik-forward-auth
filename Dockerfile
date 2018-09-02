@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine as builder
+FROM resin/rpi-raspbian as builder
 
 # Setup
 RUN mkdir /app
