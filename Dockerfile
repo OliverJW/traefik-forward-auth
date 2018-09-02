@@ -5,10 +5,10 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # Add libraries
-RUN apk add --no-cache git && \
+RUN apt-get install git && \
   go get "github.com/namsral/flag" && \
   go get "github.com/op/go-logging" && \
-  apk del git
+  apt-get remove git
 
 # Copy & build
 ADD . /app/
