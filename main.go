@@ -60,7 +60,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
   // Validate cookie
   valid, email, err := fw.ValidateCookie(r, c)
   if !valid {
-    log.Debugf("Invlaid cookie: %s", err)
+    log.Debugf("Invalid cookie: %s", err)
     http.Error(w, "Not authorized", 401)
     return
   }
@@ -212,6 +212,6 @@ func main() {
   // Attach handler
   http.HandleFunc("/", handler)
 
-  log.Notice("Litening on :4181")
+  log.Notice("Listening on :4181")
   log.Notice(http.ListenAndServe(":4181", nil))
 }
