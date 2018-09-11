@@ -69,7 +69,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     if err != nil {
       log.Error("Error generating nonce")
       http.Error(w, "Service unavailable", 503)
-      return
+      //return
     }
 
     // Set the CSRF cookie
