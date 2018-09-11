@@ -64,7 +64,8 @@ func (f *ForwardAuth) ValidateCookie(r *http.Request, c *http.Cookie) (bool, str
 
   // Valid token?
   if !hmac.Equal(mac, expected) {
-    return false, "", errors.New("Invalid cookie mac. Got:%s, expected:%s",mac,expected)
+    log.Debugf("Invalid cookie mac. Got:%s, expected:%s",mac,expected)
+    return false, "", errors.New("Invalid cookie mac.")
   }
 
   expires, err := strconv.ParseInt(parts[1], 10, 64)
