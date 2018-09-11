@@ -61,7 +61,23 @@ func handler(w http.ResponseWriter, r *http.Request) {
   valid, email, err := fw.ValidateCookie(r, c)
   if !valid {
     log.Debugf("Invalid cookie: %s", err)
-    http.Error(w, "Not authorized", 401)
+    //http.Error(w, "Not authorized", 401)
+    //return
+    //no valid may also mean cookie discrepancies, forward to get a new one
+    err, nonce := fw.Nonce()
+    if err != nil {
+      log.Error("Error generating nonce")
+      http.Error(w, "Service unavailable", 503)
+      return
+    }
+
+    // Set the CSRF cookie
+    http.SetCookie(w, fw.MakeCSRFCookie(r, nonce))
+    log.Debug("Set CSRF cookie and redirecting to google login")
+
+    // Forward them on
+    http.Redirect(w, r, fw.GetLoginURL(r, nonce), http.StatusTemporaryRedirect)
+
     return
   }
 
