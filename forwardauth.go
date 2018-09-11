@@ -36,6 +36,7 @@ type ForwardAuth struct {
   CookieSecure bool
 
   Domain []string
+  Email []string
 
   Direct bool
 }
