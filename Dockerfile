@@ -13,7 +13,7 @@ RUN \
   apt-get install git && \
   go get "github.com/namsral/flag" && \
   go get "github.com/op/go-logging" && \
-  apt-get remove git
+  apt-get remove git && \
   apt-get autoremove
 
 # Copy & build
