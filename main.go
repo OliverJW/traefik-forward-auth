@@ -63,7 +63,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
     log.Debugf("Invalid cookie: %s", err)
     //http.Error(w, "Not authorized", 401)
     //return
-    //no valid may also mean cookie discrepancies, forward to get a new one
+    //not valid may also mean cookie discrepancies, forward to get a new one
+    http.SetCookie(w, fw.ClearCSRFCookie(r))
     err, nonce := fw.Nonce()
     if err != nil {
       log.Error("Error generating nonce")
